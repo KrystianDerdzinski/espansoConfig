@@ -1,0 +1,112 @@
+# espanso configuration file
+
+# This is the default configuration file, change it as you like it
+# You can refer to the official documentation:
+# https://espanso.org/docs/
+
+# Matches are the substitution rules, when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+
+  # Dates
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+
+  # Shell commands
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo Hello from your shell"
+          
+  # git
+  - trigger: ":gs"
+    replace: "git status"
+  - trigger: ":ga"
+    replace: "git add "
+  - trigger: ":gc"
+    replace: "git commit -m "
+  - trigger: ":gd"
+    replace: "git diff "
+  - trigger: ":gwd"
+    replace: "git diff --word-diff"
+  - trigger: ":gref"
+    replace: "git push origin HEAD:refs/for/"
+  - trigger: ":gpl"
+    replace: "git pull origin "
+  - trigger: ":gpu"
+    replace: "git push origin "
+  - trigger: ":gf"
+    replace: "git fetch "
+  - trigger: ":glo"
+    replace: "git log --oneline "
+  - trigger: ":gt"
+    replace: "git tag "
+  - trigger: ":gow"
+    replace: "git show "
+  - trigger: ":gout"
+    replace: "git checkout "
+  - trigger: ":gb"
+    replace: "git branch "
+  - trigger: ":gm"
+    replace: "git merge "
+  - trigger: ":glg"
+    replace: "git log --graph --oneline "
+  - trigger: ":g-ff"
+    replace: "git merge --no-ff "
+    # docker
+  - trigger: ":ds"
+    replace: "docker stop $(docker ps -aq)"
+  - trigger: ":dc"
+    replace: "docker-compose "
+  - trigger: ":di"
+    replace: "docker images"
+  - trigger: ":dr"
+    replace: "docker run "
+  - trigger: ":dkill"
+    replace: "docker system prune -a --volumesdu -sh ~/.cache/thumbnailsgit "
+    # ec
+  - trigger: ":eca"
+    replace: "../gradlew cargoRunLocal"
+  - trigger: ":r-eca"
+    replace: "../gradlew cargoRunLocal --refresh-dependencies --rerun-tasks"
+  - trigger: ":ecup"
+    replace: "../../gradlew cargoRunLocal"
+  - trigger: ":ecc"
+    replace: "../gradlew cargoRunLocal -PcopyJsp=true"
+  - trigger: ":r-ecc"
+    replace: "../gradlew cargoRunLocal -PcopyJsp=true --refresh-dependencies --rerun-tasks"
+  - trigger: ":ecjs"
+    replace: "../../gradlew -PjsCss=false cargoRunLocal"
+  - trigger: ":ecjs-r"
+    replace: "../../gradlew -PjsCss=false cargoRunLocal --refresh-dependencies --rerun-tasks"
+  - trigger: ":?test"
+    replace: "?testSystemPassword=best.net"
+  - trigger: ":ecip"
+    replace: "192.168.0.12"
+   #espanso
+  - trigger: ":espanso"
+    replace: "gedit /home/xdrd/.config/espanso/default.yml "
+   #node
+  - trigger: ":n14"
+    replace: "nvm use 14"
+   #other
+  - trigger: ":xc"
+    replace: "| xclip"
+  - trigger: ":xo"
+    replace: "xclip -o"
+  - trigger: ":xs"
+    replace: "| xclip -selection clipboard"
+  - trigger: ":snip"
+    replace: "code /home/xdrd/dev/emmet/snippets.json"
+  - trigger: ":wifipass"
+    replace: "nmcli device wifi show-password"
+  - trigger: ":wifiports"
+    replace: "ifconfig | grep \"inet \" | grep -v 127.0.0.1"

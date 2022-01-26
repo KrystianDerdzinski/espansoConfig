@@ -77,6 +77,8 @@ matches:
   - trigger: ":g-fulltree"
     replace: "git log --graph --date=relative --name-status \
         --format=format:'%C(auto)%h %C(bold blue)%an%C(auto)%d %C(green)%ad%C(reset)%n%w(80,8,8)%s%n'"
+  - trigger: ":g-bv"
+    replace: "git branch -v"
     # docker
   - trigger: ":ds"
     replace: "docker stop $(docker ps -aq)"
